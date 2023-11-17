@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:restaurantapp
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        default_batch_fetch_size: 20
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+  data.rest:
+    base-path: /api
+    return-body-on-create: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
+logging:
+  level:
+    root: WARN
+    com.novianto.restaurant.app: DEBUG
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+server:
+  servlet:
+    context-path: /v1/api
+  error:
+    include-message: always
